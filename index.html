@@ -1,0 +1,3854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuyNow BD - Online Shopping in Bangladesh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #f7931e;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --success-color: #27ae60;
+            --danger-color: #e74c3c;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            transition: var(--transition);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--light-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 0.5rem;
+            min-width: 300px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 0.5rem;
+            flex: 1;
+            color: var(--dark-color);
+        }
+
+        .search-bar button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .cart-icon:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .login-btn {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid white;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .login-btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Beautiful Gradient Designs for Each Slide */
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .slide-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .slide-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-size: 100% 100%;
+            }
+            50% {
+                background-size: 120% 120%;
+            }
+        }
+
+        .slide-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 600px;
+            animation: slideInUp 1s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .slide-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation-fill-mode: both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Categories Section */
+        .categories {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-name {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        /* Products Section */
+        .products {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #f0f0f0;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--danger-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quantity-btn {
+            background: var(--light-color);
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .cart-total {
+            padding: 1rem;
+            border-top: 2px solid var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .checkout-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        /* Checkout Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1002;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .payment-option {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .payment-option:hover, .payment-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(255,107,53,0.1);
+        }
+
+        .place-order-btn {
+            width: 100%;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .place-order-btn:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            background: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 2rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            z-index: 1003;
+        }
+
+        .toast.show {
+            bottom: 20px;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .search-bar {
+                min-width: 100%;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 1.2rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #f5f5f5;
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 2rem;
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .admin-nav button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .admin-nav button:hover, .admin-nav button.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .admin-content {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .orders-table {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .table-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .status-pending { background: #f39c12; color: white; }
+        .status-processing { background: #3498db; color: white; }
+        .status-shipped { background: #9b59b6; color: white; }
+        .status-delivered { background: #27ae60; color: white; }
+
+        /* Courier Tracking Styles */
+        .courier-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .courier-modal.active {
+            display: flex;
+        }
+
+        .courier-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .tracking-timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 2rem 0;
+        }
+
+        .tracking-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #ddd;
+        }
+
+        .tracking-step {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .tracking-step::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .tracking-step.completed::before {
+            background: var(--success-color);
+            box-shadow: 0 0 0 2px var(--success-color);
+        }
+
+        .tracking-time {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-status {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .tracking-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .courier-form {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Header Responsive */
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                width: 100%;
+            }
+
+            .search-bar {
+                min-width: 100%;
+                order: 3;
+            }
+
+            .header-actions {
+                order: 2;
+            }
+
+            /* Hero Section Responsive */
+            .hero {
+                height: 400px;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .slide-content p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            /* Categories Responsive */
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+
+            .category-card {
+                padding: 1.5rem 0.8rem;
+            }
+
+            .category-icon {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Products Responsive */
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .product-image {
+                height: 150px;
+            }
+
+            .product-name {
+                font-size: 0.9rem;
+            }
+
+            .product-price {
+                font-size: 1rem;
+            }
+
+            /* Cart Responsive */
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .cart-item-image {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* Checkout Modal Responsive */
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .payment-options {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            /* Footer Responsive */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-section {
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer-section ul li {
+                font-size: 0.9rem;
+                padding: 0.3rem 0;
+            }
+
+            /* Info Sections Responsive */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .terms-content, .privacy-content, .returns-content, .shipping-content, .track-order-content {
+                padding: 30px 20px;
+            }
+
+            .track-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .delivery-times {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-answer p {
+                padding: 15px 20px;
+            }
+
+            /* Admin Panel Responsive */
+            .admin-nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-wrapper {
+                overflow-x: auto;
+            }
+
+            .courier-form {
+                padding: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* Adjust font sizes for mobile */
+            body {
+                font-size: 14px;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .slide-content {
+                padding: 1rem;
+            }
+
+            /* Ensure full viewport on mobile */
+            html, body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            /* Mobile-specific adjustments */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Touch-friendly buttons */
+            .cta-button, .add-to-cart-btn, .login-btn {
+                min-height: 44px; /* iOS touch target */
+            }
+
+            /* Better spacing on mobile */
+            .categories, .products {
+                margin: 2rem auto;
+            }
+
+            /* Responsive images */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Extra small devices (phones in portrait) */
+        @media (max-width: 480px) {
+            .hero {
+                height: 350px;
+            }
+
+            .slide-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .slide-content p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .category-card {
+                padding: 1rem 0.5rem;
+            }
+
+            .category-icon {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            /* Smaller cart on mobile */
+            .cart-sidebar {
+                width: 100%;
+            }
+
+            /* Compact footer */
+            .footer-section {
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.1rem;
+            }
+
+            .footer-section ul li {
+                font-size: 0.9rem;
+                padding: 0.3rem 0;
+            }
+        }
+
+        /* Large tablets and small desktops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            }
+
+            .slide-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .slide-content p {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Ensure proper viewport meta tag behavior */
+        @viewport {
+            width: device-width;
+            zoom: 1.0;
+        }
+
+        /* Prevent horizontal scroll */
+        * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Smooth scrolling for all anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Info Sections Styles */
+        .info-section {
+            display: none;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            scroll-margin-top: 80px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .info-section.active {
+            display: block;
+        }
+
+        .info-section .close-section {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background 0.3s ease;
+        }
+
+        .info-section .close-section:hover {
+            background: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .about-text h4 {
+            color: var(--secondary-color);
+            margin: 30px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .about-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .about-text ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .about-text ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-item h3 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .terms-content, .privacy-content, .returns-content, .shipping-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .terms-content h3, .privacy-content h3, .returns-content h3, .shipping-content h3 {
+            color: var(--primary-color);
+            margin: 30px 0 15px 0;
+            font-size: 1.4rem;
+        }
+
+        .terms-content h3:first-child,
+        .privacy-content h3:first-child,
+        .returns-content h3:first-child,
+        .shipping-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .terms-content p, .privacy-content p, .returns-content p, .shipping-content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .terms-content ul, .privacy-content ul, .returns-content ul, .shipping-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .terms-content ul li, .privacy-content ul li, .returns-content ul li, .shipping-content ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .terms-content ul li:before, .privacy-content ul li:before, .returns-content ul li:before, .shipping-content ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .terms-content ol, .returns-content ol {
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .terms-content ol li, .returns-content ol li {
+            padding: 10px 0;
+            color: #555;
+        }
+
+        .track-order-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .track-form {
+            display: flex;
+            gap: 20px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .track-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .track-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .track-btn {
+            padding: 15px 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .track-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        .track-result {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .tracking-timeline {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .tracking-step {
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .tracking-step.completed {
+            border-left-color: var(--success-color);
+            background: #d4edda;
+        }
+
+        .tracking-time {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .tracking-status {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .tracking-location {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .delivery-times {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .delivery-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .delivery-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .delivery-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .delivery-item p {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .faq-content {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-color);
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-arrow {
+            transition: transform 0.3s ease;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 20px 30px;
+            margin: 0;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Active Section Highlight */
+        .info-section:target {
+            animation: highlight 1s ease;
+        }
+
+        @keyframes highlight {
+            0% {
+                background-color: rgba(255, 193, 7, 0.3);
+            }
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .terms-content, .privacy-content, .returns-content, .shipping-content, .track-order-content {
+                padding: 30px 20px;
+            }
+
+            .track-form {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .delivery-times {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-answer p {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">🛍️ BuyNow BD</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search products...">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+            <div class="header-actions">
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="login-btn" onmousedown="handleAdminAccess(event)">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="slider" id="slider">
+            <div class="slide slide-1">
+                <div class="slide-content">
+                    <h1>Mega Sale 50% OFF</h1>
+                    <p>Exclusive deals on electronics and fashion</p>
+                    <button class="cta-button" onclick="scrollToShop()">Shop Now</button>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div class="slide-content">
+                    <h1>Flash Sale</h1>
+                    <p>Up to 70% off on selected items</p>
+                    <button class="cta-button" onclick="showFlashDeals()">View Deals</button>
+                </div>
+            </div>
+            <div class="slide slide-3">
+                <div class="slide-content">
+                    <h1>New Arrivals</h1>
+                    <p>Latest products just for you</p>
+                    <button class="cta-button" onclick="showNewArrivals()">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="shop">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card" onclick="filterByCategory('electronics')">
+                <div class="category-icon">📱</div>
+                <div class="category-name">Electronics</div>
+            </div>
+            <div class="category-card" onclick="filterByCategory('fashion')">
+                <div class="category-icon">👔</div>
+                <div class="category-name">Fashion</div>
+            </div>
+            <div class="category-card" onclick="filterByCategory('shoes')">
+                <div class="category-icon">👟</div>
+                <div class="category-name">Shoes</div>
+            </div>
+            <div class="category-card" onclick="filterByCategory('watch')">
+                <div class="category-icon">⌚</div>
+                <div class="category-name">Watch</div>
+            </div>
+            <div class="category-card" onclick="filterByCategory('gadgets')">
+                <div class="category-icon">🎮</div>
+                <div class="category-name">Gadgets</div>
+            </div>
+            <div class="category-card" onclick="filterByCategory('accessories')">
+                <div class="category-icon">💍</div>
+                <div class="category-name">Accessories</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total" id="cartTotal">
+            Total: ৳0
+        </div>
+        <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="modal-close" onclick="closeCheckout()">×</button>
+            </div>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="district">District</label>
+                    <select id="district" required>
+                        <option value="">Select District</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="thana">Thana/Upazila</label>
+                    <select id="thana" required>
+                        <option value="">Select Thana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Detailed Address</label>
+                    <textarea id="address" rows="2" placeholder="House/Village, Road, Post Office" required></textarea>
+                </div>
+                <h3>Payment Method</h3>
+                <div class="payment-options">
+                    <div class="payment-option" onclick="selectPayment(this, 'bkash')">
+                        <div>bKash</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment(this, 'nagad')">
+                        <div>Nagad</div>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment(this, 'rocket')">
+                        <div>Rocket</div>
+                    </div>
+                </div>
+                <div class="cart-total" id="checkoutTotal">
+                    Total: ৳0
+                </div>
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About BuyNow BD</h3>
+                <p>Your trusted online shopping destination in Bangladesh. Quality products, best prices, and fast delivery.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">t</a>
+                    <a href="#" class="social-link">i</a>
+                    <a href="#" class="social-link">y</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showInfoSection('about'); return false;">About Us</a></li>
+                    <li><a href="#" onclick="showInfoSection('contact'); return false;">Contact</a></li>
+                    <li><a href="#" onclick="showInfoSection('terms'); return false;">Terms & Conditions</a></li>
+                    <li><a href="#" onclick="showInfoSection('privacy'); return false;">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#" onclick="showInfoSection('track-order'); return false;">Track Order</a></li>
+                    <li><a href="#" onclick="showInfoSection('returns'); return false;">Returns</a></li>
+                    <li><a href="#" onclick="showInfoSection('shipping'); return false;">Shipping Info</a></li>
+                    <li><a href="#" onclick="showInfoSection('faq'); return false;">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li>📧 support@buynowbd.com</li>
+                    <li>📱 +880 1234-567890</li>
+                    <li>📍 Dhaka, Bangladesh</li>
+                    <li>🕐 24/7 Customer Support</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 BuyNow BD. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- About Us Section -->
+    <section class="info-section" id="about">
+        <button class="close-section" onclick="closeInfoSection('about')">×</button>
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to BuyNow BD</h3>
+                    <p>BuyNow BD is Bangladesh's premier e-commerce platform, dedicated to providing you with the best online shopping experience. Founded in 2024, we have quickly become one of the most trusted online shopping destinations in the country.</p>
+                    <p>Our mission is to make quality products accessible to everyone across Bangladesh at affordable prices. We work directly with manufacturers and trusted suppliers to ensure authenticity and quality.</p>
+                    <h4>Our Values</h4>
+                    <ul>
+                        <li>Customer satisfaction is our top priority</li>
+                        <li>We offer only genuine and high-quality products</li>
+                        <li>Fast and reliable delivery nationwide</li>
+                        <li>Secure payment options for your peace of mind</li>
+                        <li>24/7 customer support to assist you</li>
+                    </ul>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>50,000+</h3>
+                        <p>Happy Customers</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10,000+</h3>
+                        <p>Products Available</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>64</h3>
+                        <p>Districts Covered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Customer Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions Section -->
+    <section class="info-section" id="terms">
+        <button class="close-section" onclick="closeInfoSection('terms')">×</button>
+        <div class="container">
+            <h2 class="section-title">Terms & Conditions</h2>
+            <div class="terms-content">
+                <h3>1. Acceptance of Terms</h3>
+                <p>By accessing and using BuyNow BD, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                
+                <h3>2. Use License</h3>
+                <p>Permission is granted to temporarily download one copy of the materials on BuyNow BD for personal, non-commercial transitory viewing only.</p>
+                
+                <h3>3. Product Information</h3>
+                <p>We strive to be as accurate as possible in the descriptions of products. However, we do not warrant that product descriptions, colors, information, or other content of the site are accurate, complete, reliable, current, or error-free.</p>
+                
+                <h3>4. Pricing and Availability</h3>
+                <p>All prices are shown in Bangladeshi Taka (BDT) and are subject to change without notice. We reserve the right to modify or discontinue products at any time.</p>
+                
+                <h3>5. Payment Terms</h3>
+                <p>Payment can be made through our available payment methods including bKash, Nagad, Rocket, and other digital payment systems. All transactions are secure and encrypted.</p>
+                
+                <h3>6. Shipping and Delivery</h3>
+                <p>We aim to deliver products within 3-7 business days depending on your location. Delivery times may vary during peak seasons or promotional periods.</p>
+                
+                <h3>7. Return Policy</h3>
+                <p>Products can be returned within 7 days of delivery if they are defective or not as described. The product must be unused and in its original packaging.</p>
+                
+                <h3>8. Privacy</h3>
+                <p>Your privacy is important to us. Please review our Privacy Policy, which also governs your use of our site.</p>
+                
+                <h3>9. Limitation of Liability</h3>
+                <p>In no event shall BuyNow BD, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this website.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section class="info-section" id="privacy">
+        <button class="close-section" onclick="closeInfoSection('privacy')">×</button>
+        <div class="container">
+            <h2 class="section-title">Privacy Policy</h2>
+            <div class="privacy-content">
+                <h3>Information We Collect</h3>
+                <p>When you visit BuyNow BD, we collect information to help us personalize your experience and improve our services.</p>
+                
+                <h3>Personal Information</h3>
+                <p>We may collect personally identifiable information, such as your name, email address, phone number, and delivery address when you place an order or create an account.</p>
+                
+                <h3>How We Use Your Information</h3>
+                <ul>
+                    <li>To process and fulfill your orders</li>
+                    <li>To provide customer support</li>
+                    <li>To improve our website and services</li>
+                    <li>To send you promotional offers (with your consent)</li>
+                    <li>To protect against fraud and ensure security</li>
+                </ul>
+                
+                <h3>Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h3>Cookies</h3>
+                <p>We use cookies to enhance your experience on our website. Cookies help us remember your preferences and track website usage.</p>
+                
+                <h3>Third-Party Services</h3>
+                <p>We may share your information with trusted third-party service providers for payment processing and delivery services.</p>
+                
+                <h3>Your Rights</h3>
+                <p>You have the right to access, update, or delete your personal information at any time by contacting our customer support.</p>
+                
+                <h3>Changes to This Policy</h3>
+                <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Order Section -->
+    <section class="info-section" id="track-order">
+        <button class="close-section" onclick="closeInfoSection('track-order')">×</button>
+        <div class="container">
+            <h2 class="section-title">Track Your Order</h2>
+            <div class="track-order-content">
+                <p>Enter your order ID to track your package in real-time.</p>
+                <div class="track-form">
+                    <input type="text" id="trackOrderId" placeholder="Enter your Order ID (e.g., TRK123456789)">
+                    <button class="track-btn" onclick="trackUserOrder()">Track Order</button>
+                </div>
+                <div id="trackResult" class="track-result" style="display: none;">
+                    <h3>Tracking Information</h3>
+                    <div class="tracking-timeline">
+                        <div class="tracking-step completed">
+                            <div class="tracking-time">10:00 AM</div>
+                            <div class="tracking-status">Order Placed</div>
+                            <div class="tracking-location">Dhaka Warehouse</div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <div class="tracking-time">2:00 PM</div>
+                            <div class="tracking-status">Order Confirmed</div>
+                            <div class="tracking-location">Processing Center</div>
+                        </div>
+                        <div class="tracking-step completed">
+                            <div class="tracking-time">6:00 PM</div>
+                            <div class="tracking-status">Out for Delivery</div>
+                            <div class="tracking-location">Local Hub</div>
+                        </div>
+                        <div class="tracking-step">
+                            <div class="tracking-time">Expected: 4:00 PM</div>
+                            <div class="tracking-status">Delivered</div>
+                            <div class="tracking-location">Your Address</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Returns Section -->
+    <section class="info-section" id="returns">
+        <button class="close-section" onclick="closeInfoSection('returns')">×</button>
+        <div class="container">
+            <h2 class="section-title">Returns & Refunds</h2>
+            <div class="returns-content">
+                <h3>Our Return Policy</h3>
+                <p>At BuyNow BD, we want you to be completely satisfied with your purchase. If you're not happy with your order, we're here to help.</p>
+                
+                <h3>Return Eligibility</h3>
+                <ul>
+                    <li>Items must be returned within 7 days of delivery</li>
+                    <li>Products must be unused and in original packaging</li>
+                    <li>All tags and labels must be intact</li>
+                    <li>Original receipt or proof of purchase required</li>
+                </ul>
+                
+                <h3>Non-Returnable Items</h3>
+                <ul>
+                    <li>Perishable goods (food, flowers, etc.)</li>
+                    <li>Intimate apparel and swimwear</li>
+                    <li>Gift cards and promotional items</li>
+                    <li>Customized or personalized products</li>
+                </ul>
+                
+                <h3>Return Process</h3>
+                <ol>
+                    <li>Contact our customer support team</li>
+                    <li>Provide your order number and reason for return</li>
+                    <li>We'll arrange for pickup or provide return instructions</li>
+                    <li>Once received, we'll inspect the item</li>
+                    <li>Refund will be processed within 5-7 business days</li>
+                </ol>
+                
+                <h3>Refund Options</h3>
+                <p>Refunds can be issued as:</p>
+                <ul>
+                    <li>Original payment method refund</li>
+                    <li>Store credit for future purchases</li>
+                    <li>Exchange for different size/color (subject to availability)</li>
+                </ul>
+                
+                <h3>Return Shipping Costs</h3>
+                <p>Return shipping is free for defective items. For other returns, a nominal shipping fee may apply.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shipping Info Section -->
+    <section class="info-section" id="shipping">
+        <button class="close-section" onclick="closeInfoSection('shipping')">×</button>
+        <div class="container">
+            <h2 class="section-title">Shipping Information</h2>
+            <div class="shipping-content">
+                <h3>Delivery Areas</h3>
+                <p>We deliver to all 64 districts of Bangladesh, covering both urban and rural areas.</p>
+                
+                <h3>Delivery Timeframes</h3>
+                <div class="delivery-times">
+                    <div class="delivery-item">
+                        <h4>Dhaka Metropolitan</h4>
+                        <p>2-3 business days</p>
+                    </div>
+                    <div class="delivery-item">
+                        <h4>Major Cities</h4>
+                        <p>3-5 business days</p>
+                    </div>
+                    <div class="delivery-item">
+                        <h4>Rural Areas</h4>
+                        <p>5-7 business days</p>
+                    </div>
+                    <div class="delivery-item">
+                        <h4>Remote Areas</h4>
+                        <p>7-10 business days</p>
+                    </div>
+                </div>
+                
+                <h3>Shipping Charges</h3>
+                <ul>
+                    <li>Free shipping on orders above ৳1000</li>
+                    <li>Standard delivery: ৳60 for orders below ৳1000</li>
+                    <li>Express delivery: ৳120 (available in Dhaka only)</li>
+                </ul>
+                
+                <h3>Delivery Partners</h3>
+                <p>We work with trusted delivery partners including:</p>
+                <ul>
+                    <li>Pathao</li>
+                    <li>RedX</li>
+                    <li>SteadFast</li>
+                    <li>eCourier</li>
+                    <li>SA Paribahan</li>
+                </ul>
+                
+                <h3>Order Processing</h3>
+                <p>Orders are processed within 24 hours on business days. You'll receive a confirmation email with tracking details once your order ships.</p>
+                
+                <h3>Delivery Instructions</h3>
+                <p>Please provide accurate delivery address and phone number. Our delivery partner will contact you before delivery.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="info-section" id="faq">
+        <button class="close-section" onclick="closeInfoSection('faq')">×</button>
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I place an order?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Placing an order is simple! Browse our products, select your size, add items to cart, proceed to checkout, fill in your details, select payment method, and confirm your order. You'll receive a confirmation email with order details.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What payment methods do you accept?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept multiple payment methods including bKash, Nagad, Rocket, and all major credit/debit cards. All transactions are secure and encrypted for your safety.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How can I track my order?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can track your order using the Track Order section on our website. Simply enter your order ID, and you'll see real-time updates on your package location and estimated delivery time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is your return policy?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 7-day return policy for defective or incorrect items. The product must be unused and in original packaging. Contact our customer support team to initiate a return.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Do you deliver to my area?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We deliver to all 64 districts of Bangladesh. Delivery times vary by location - 2-3 days in Dhaka, 3-5 days in major cities, and 5-7 days in rural areas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How do I contact customer support?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can reach our customer support team via email at support@buynowbd.com, phone at +880 1234-567890, or through the live chat feature on our website. We're available 24/7 to assist you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I cancel or modify my order?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Orders can be cancelled or modified within 2 hours of placement. After that, please contact our customer support team, and we'll do our best to accommodate your request.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Are the products authentic?</span>
+                        <span class="faq-arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We source all our products directly from manufacturers or authorized distributors. We guarantee 100% authentic products and offer quality assurance on all items.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1>🛡️ Admin Panel - BuyNow BD</h1>
+            <button class="login-btn" onclick="toggleAdminPanel()">Exit Admin</button>
+        </div>
+        <div class="admin-nav">
+            <button class="active" onclick="showAdminSection('dashboard')">Dashboard</button>
+            <button onclick="showAdminSection('orders')">Orders</button>
+            <button onclick="showAdminSection('products')">Products</button>
+            <button onclick="showAdminSection('customers')">Customers</button>
+            <button onclick="showAdminSection('courier')">Courier</button>
+        </div>
+        <div class="admin-content">
+            <!-- Dashboard Section -->
+            <div class="admin-section active" id="admin-dashboard">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalOrders">0</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalRevenue">৳0</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalCustomers">0</div>
+                        <div class="stat-label">Total Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="pendingOrders">0</div>
+                        <div class="stat-label">Pending Orders</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <div class="admin-section" id="admin-orders">
+                <h2>Order Management</h2>
+                <div class="orders-table">
+                    <div class="table-header">All Orders</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer Details</th>
+                                    <th>Full Address</th>
+                                    <th>Products</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Orders will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="admin-section" id="admin-products">
+                <h2>Product Management</h2>
+                
+                <!-- Add New Product Form -->
+                <div class="courier-form">
+                    <h3>Add New Product</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" id="newProductName" placeholder="Enter product name">
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select id="newProductCategory">
+                                <option value="electronics">Electronics</option>
+                                <option value="fashion">Fashion</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="watch">Watch</option>
+                                <option value="gadgets">Gadgets</option>
+                                <option value="accessories">Accessories</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Price (৳)</label>
+                            <input type="number" id="newProductPrice" placeholder="Enter price">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Original Price (৳)</label>
+                            <input type="number" id="newProductOriginalPrice" placeholder="Enter original price">
+                        </div>
+                        <div class="form-group">
+                            <label>Discount (%)</label>
+                            <input type="number" id="newProductDiscount" placeholder="Enter discount percentage" min="0" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock Quantity</label>
+                            <input type="number" id="newProductStock" placeholder="Enter stock quantity" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" id="newProductImage" placeholder="Enter image URL (optional)">
+                    </div>
+                    <button class="place-order-btn" onclick="addNewProduct()">Add Product</button>
+                </div>
+                
+                <div class="orders-table">
+                    <div class="table-header">All Products</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <!-- Products will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Section -->
+            <div class="admin-section" id="admin-customers">
+                <h2>Customer Management</h2>
+                <div class="orders-table">
+                    <div class="table-header">All Customers</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Total Orders</th>
+                                    <th>Total Spent</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTableBody">
+                                <!-- Customers will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courier Section -->
+            <div class="admin-section" id="admin-courier">
+                <h2>Courier Management</h2>
+                <div class="courier-form">
+                    <h3>Create New Shipment</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Order ID</label>
+                            <input type="text" id="shipmentOrderId" placeholder="Enter Order ID">
+                        </div>
+                        <div class="form-group">
+                            <label>Courier Service</label>
+                            <select id="courierService">
+                                <option value="pathao">Pathao</option>
+                                <option value="redx">RedX</option>
+                                <option value="steadfast">SteadFast</option>
+                                <option value="ecourier">eCourier</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tracking Number</label>
+                            <input type="text" id="trackingNumber" placeholder="Auto-generated">
+                        </div>
+                    </div>
+                    <button class="place-order-btn" onclick="createShipment()">Create Shipment</button>
+                </div>
+                <div class="orders-table">
+                    <div class="table-header">All Shipments</div>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Shipment ID</th>
+                                    <th>Order ID</th>
+                                    <th>Courier</th>
+                                    <th>Tracking</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="shipmentsTableBody">
+                                <!-- Shipments will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courier Tracking Modal -->
+    <div class="courier-modal" id="courierModal">
+        <div class="courier-content">
+            <div class="modal-header">
+                <h2>Track Your Order</h2>
+                <button class="modal-close" onclick="closeCourierModal()">×</button>
+            </div>
+            <div class="courier-form">
+                <div class="form-group">
+                    <label>Enter Tracking Number</label>
+                    <input type="text" id="trackingInput" placeholder="Enter your tracking number">
+                </div>
+                <button class="place-order-btn" onclick="trackOrder()">Track Order</button>
+            </div>
+            <div id="trackingResult" style="display: none;">
+                <h3>Tracking Details</h3>
+                <div class="tracking-timeline" id="trackingTimeline">
+                    <!-- Tracking steps will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">↑</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+        })();
+
+        // Bangladesh Districts and Thanas Data
+        const bangladeshDistricts = {
+            "Dhaka": ["Dhaka", "Dhamrai", "Keraniganj", "Nawabganj", "Savar"],
+            "Faridpur": ["Faridpur Sadar", "Alfadanga", "Bhanga", "Boalmari", "Charbhadrasan", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha"],
+            "Gazipur": ["Gazipur Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur", "Uttara"],
+            "Gopalganj": ["Gopalganj Sadar", "Kashiani", "Kotalipara", "Muksudpur", "Tungipara"],
+            "Kishoreganj": ["Kishoreganj Sadar", "Austagram", "Bajitpur", "Bhairab Bazar", "Hossainpur", "Itna", "Karimganj", "Katiadi", "Mithamain", "Nikli", "Pakundia", "Tarail"],
+            "Madaripur": ["Madaripur Sadar", "Kalkini", "Rajoir", "Shibchar"],
+            "Manikganj": ["Manikganj Sadar", "Daulatpur", "Ghior", "Harirampur", "Shibalaya", "Saturia"],
+            "Munshiganj": ["Munshiganj Sadar", "Gazaria", "Lohajang", "Sirajdikhan", "Sreenagar", "Tongibari"],
+            "Narayanganj": ["Narayanganj Sadar", "Araihazar", "Bandar", "Narayanganj", "Rupganj", "Sonargaon"],
+            "Narsingdi": ["Narsingdi Sadar", "Belabo", "Monohardi", "Palash", "Raipura", "Shibpur"],
+            "Rajbari": ["Rajbari Sadar", "Baliakandi", "Goalandaghat", "Kalukhali", "Pangsha"],
+            "Shariatpur": ["Shariatpur Sadar", "Bhedarganj", "Damudya", "Gosairhat", "Kadarhati", "Naria"],
+            "Tangail": ["Tangail Sadar", "Basail", "Bhuapur", "Delduar", "Ghatail", "Gopalpur", "Kalihati", "Madhupur", "Mirzapur", "Nagarpur", "Sakhipur", "Dhanbari"],
+            "Bagerhat": ["Bagerhat Sadar", "Chitalmari", "Fakirhat", "Kachua", "Mollahat", "Mongla", "Morrelganj", "Rampal", "Sarankhola"],
+            "Chuadanga": ["Chuadanga Sadar", "Alamdanga", "Damurhuda", "Jibannagar"],
+            "Jessore": ["Jessore Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Monirampur", "Narail", "Sharsha"],
+            "Jhenaidah": ["Jhenaidah Sadar", "Harinakundu", "Kaliganj", "Kotchandpur", "Moheshpur", "Shailkupa"],
+            "Khulna": ["Khulna Sadar", "Batiaghata", "Dumuria", "Dighalia", "Khalishpur", "Koyra", "Paikgachha", "Phultala", "Rupsha", "Terokhada"],
+            "Kushtia": ["Kushtia Sadar", "Daulatpur", "Khoksa", "Kumarkhali", "Mirpur"],
+            "Magura": ["Magura Sadar", "Mohammadpur", "Shalikha", "Sreepur"],
+            "Meherpur": ["Meherpur Sadar", "Gangni", "Mujibnagar"],
+            "Narail": ["Narail Sadar", "Kalia", "Lohagara", "Naragati"],
+            "Satkhira": ["Satkhira Sadar", "Assasuni", "Debhata", "Kalaroa", "Kaliganj", "Shyamnagar", "Tala"],
+            "Barguna": ["Barguna Sadar", "Amtali", "Bamna", "Betagi", "Patharghata", "Pirojpur"],
+            "Barisal": ["Barisal Sadar", "Agailjhara", "Babuganj", "Bakerganj", "Hizla", "Muladi", "Mehendiganj", "Wazirpur"],
+            "Bhola": ["Bhola Sadar", "Borhanuddin", "Charfasson", "Daulatkhan", "Lalmohan", "Monpura", "Tazumuddin"],
+            "Jhalokati": ["Jhalokati Sadar", "Kanthalia", "Nalchity", "Rajapur"],
+            "Pirojpur": ["Pirojpur Sadar", "Bhandaria", "Kawkhali", "Mathbaria", "Nazirpur", "Zianagar"],
+            "Patuakhali": ["Patuakhali Sadar", "Bauphal", "Dashmina", "Dumki", "Galachipa", "Kalapara", "Mirzaganj", "Rangabali"],
+            "Pabna": ["Pabna Sadar", "Atgharia", "Bera", "Bhangura", "Chatmohar", "Faridpur", "Ishwardi", "Sujanagar"],
+            "Rajshahi": ["Rajshahi Sadar", "Bagha", "Bagmara", "Charghat", "Durgapur", "Godagari", "Mohanpur", "Paba", "Puthia", "Tanore"],
+            "Bogura": ["Bogura Sadar", "Adamdighi", "Dhunat", "Gabtali", "Kahaloo", "Nandigram", "Sariakandi", "Shibganj", "Sherpur", "Sonatala"],
+            "Chapainawabganj": ["Chapainawabganj Sadar", "Bholahat", "Gomastapur", "Nachole", "Shibganj"],
+            "Joypurhat": ["Joypurhat Sadar", "Akkelpur", "Kalai", "Khetlal", "Panchbibi"],
+            "Naogaon": ["Naogaon Sadar", "Atrai", "Badalgachhi", "Baldahakhandi", "Dhamoirhat", "Manda", "Mohadevpur", "Niamatpur", "Patnitala", "Porsha", "Raninagar", "Sapahar"],
+            "Natore": ["Natore Sadar", "Bagatipara", "Baraigram", "Gurudaspur", "Lalpur", "Singra"],
+            "Chattogram": ["Chattogram Sadar", "Anwara", "Banshkhali", "Boalkhali", "Chandanaish", "Fatikchhari", "Hathazari", "Lohagara", "Mirsharai", "Patiya", "Rangunia", "Raozan", "Sandwip", "Satkania", "Sitakunda"],
+            "Bandarban": ["Bandarban Sadar", "Alikadam", "Bamboo", "Lama", "Naikhongchhari", "Rowangchhari", "Ruma"],
+            "Brahmanbaria": ["Brahmanbaria Sadar", "Akhaura", "Bancharampur", "Kasba", "Nabinagar", "Nasirnagar", "Sarail", "Ashuganj"],
+            "Chandpur": ["Chandpur Sadar", "Faridganj", "Haimchar", "Haziganj", "Kachua", "Matlab", "Shahrasti"],
+            "Comilla": ["Comilla Sadar", "Barura", "Brahmanpara", "Burichang", "Chandina", "Chauddagram", "Daudkandi", "Debidwar", "Homna", "Laksam", "Muradnagar", "Nangalkot", "Titas", "Monohorganj"],
+            "Cox's Bazar": ["Cox's Bazar Sadar", "Chakoria", "Kutubdia", "Maheshkhali", "Pekua", "Ramu", "Teknaf", "Ukhia"],
+            "Feni": ["Feni Sadar", "Chhagalnaiya", "Daganbhuiyan", "Sonagazi", "Feni Sadar", "Parshuram"],
+            "Khagrachari": ["Khagrachari Sadar", "Dighinala", "Laxmichhari", "Mahalchhari", "Manikchhari", "Matiranga", "Ramgarh"],
+            "Lakshmipur": ["Lakshmipur Sadar", "Ramgati", "Raipur", "Ramganj", "Kamalnagar", "Tazumuddin"],
+            "Noakhali": ["Noakhali Sadar", "Begumganj", "Chatkhil", "Companiganj", "Feni", "Hatiya", "Kabirhat", "Senbagh", "Subarnachar"],
+            "Rangamati": ["Rangamati Sadar", "Barkal", "Belaichhari", "Kaptai", "Kawkhadi", "Langadu", "Naniarchar", "Rajasthali", "Juraichhari"],
+            "Sylhet": ["Sylhet Sadar", "Balaganj", "Beanibazar", "Bishwanath", "Dakshin Surma", "Derai", "Dowarabazar", "Fenchuganj", "Golapganj", "Gowainghat", "Jaintiapur", "Kanaighat", "Zakiganj"],
+            "Moulvibazar": ["Moulvibazar Sadar", "Barlekha", "Juri", "Kulaura", "Rajnagar", "Sreemangal"],
+            "Habiganj": ["Habiganj Sadar", "Ajmiriganj", "Bahubal", "Bishwanathpur", "Chunarughat", "Lakhai", "Madhabkundu", "Nabiganj"],
+            "Sunamganj": ["Sunamganj Sadar", "Bishwanath", "Chhatak", "Dakshin Sunamganj", "Derai", "Dharampasha", "Jagannathpur", "Sullah"],
+            "Dinajpur": ["Dinajpur Sadar", "Birampur", "Birganj", "Bochaganj", "Chirirbandar", "Kaharol", "Khansama", "Parbatipur"],
+            "Gaibandha": ["Gaibandha Sadar", "Fulchhari", "Gobindaganj", "Palashbari", "Sadullapur", "Sundarganj", "Ulipur"],
+            "Kurigram": ["Kurigram Sadar", "Bhurungamari", "Char Rajibpur", "Chilmari", "Phulbari", "Nageshwari", "Rajarhat", "Rowmari", "Ulipur"],
+            "Lalmonirhat": ["Lalmonirhat Sadar", "Aditmari", "Hatibandha", "Kaliganj", "Patgram"],
+            "Nilphamari": ["Nilphamari Sadar", "Dimla", "Domar", "Jaldhaka", "Kishoreganj", "Saidpur"],
+            "Panchagarh": ["Panchagarh Sadar", "Atwari", "Boda", "Debiganj", "Tetulia"],
+            "Rangpur": ["Rangpur Sadar", "Badarganj", "Gangachara", "Kaunia", "Mithapukur", "Pirgachha", "Pirgacha", "Taraganj"],
+            "Sirajganj": ["Sirajganj Sadar", "Belkuchi", "Chowhali", "Kamarkhanda", "Kazipur", "Raiganj", "Shahjadpur", "Tarash", "Ullapara"],
+            "Thakurgaon": ["Thakurgaon Sadar", "Baliadangi", "Haripur", "Pirganj", "Ranishankail"]
+        };
+
+        // Initialize District and Thana Dropdowns
+        function initializeAddressDropdowns() {
+            // Populate District Dropdown
+            const districtSelect = document.getElementById('district');
+            Object.keys(bangladeshDistricts).sort().forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+
+            // Handle District Change
+            districtSelect.addEventListener('change', function() {
+                const thanaSelect = document.getElementById('thana');
+                const selectedDistrict = this.value;
+                
+                // Clear existing thanas
+                thanaSelect.innerHTML = '<option value="">Select Thana</option>';
+                
+                if (selectedDistrict && bangladeshDistricts[selectedDistrict]) {
+                    // Populate Thana Dropdown
+                    bangladeshDistricts[selectedDistrict].sort().forEach(thana => {
+                        const option = document.createElement('option');
+                        option.value = thana;
+                        option.textContent = thana;
+                        thanaSelect.appendChild(option);
+                    });
+                }
+            });
+        }
+
+        // Cart Management
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        let customers = JSON.parse(localStorage.getItem('customers')) || [];
+        let shipments = JSON.parse(localStorage.getItem('shipments')) || [];
+        
+        // Main Products Array - This is the permanent data source
+        let products = [
+            {
+                id: 1,
+                name: "Smartphone Pro Max",
+                price: 45000,
+                originalPrice: 65000,
+                category: "electronics",
+                discount: 30,
+                stock: 50,
+                image: "https://picsum.photos/seed/phone1/300/200"
+            },
+            {
+                id: 2,
+                name: "Laptop Ultra Book",
+                price: 75000,
+                originalPrice: 95000,
+                category: "electronics",
+                discount: 21,
+                stock: 25,
+                image: "https://picsum.photos/seed/laptop1/300/200"
+            },
+            {
+                id: 3,
+                name: "Fashion T-Shirt",
+                price: 800,
+                originalPrice: 1200,
+                category: "fashion",
+                discount: 33,
+                stock: 100,
+                image: "https://picsum.photos/seed/shirt1/300/200"
+            },
+            {
+                id: 4,
+                name: "Running Shoes",
+                price: 2500,
+                originalPrice: 3500,
+                category: "shoes",
+                discount: 29,
+                stock: 75,
+                image: "https://picsum.photos/seed/shoes1/300/200"
+            },
+            {
+                id: 5,
+                name: "Smart Watch",
+                price: 3500,
+                originalPrice: 5000,
+                category: "watch",
+                discount: 30,
+                stock: 60,
+                image: "https://picsum.photos/seed/watch1/300/200"
+            },
+            {
+                id: 6,
+                name: "Gaming Headset",
+                price: 1800,
+                originalPrice: 2500,
+                category: "gadgets",
+                discount: 28,
+                stock: 40,
+                image: "https://picsum.photos/seed/headset1/300/200"
+            },
+            {
+                id: 7,
+                name: "Leather Wallet",
+                price: 600,
+                originalPrice: 900,
+                category: "accessories",
+                discount: 33,
+                stock: 80,
+                image: "https://picsum.photos/seed/wallet1/300/200"
+            },
+            {
+                id: 8,
+                name: "Wireless Earbuds",
+                price: 2200,
+                originalPrice: 3200,
+                category: "electronics",
+                discount: 31,
+                stock: 55,
+                image: "https://picsum.photos/seed/earbuds1/300/200"
+            },
+            {
+                id: 9,
+                name: "Denim Jeans",
+                price: 1500,
+                originalPrice: 2200,
+                category: "fashion",
+                discount: 32,
+                stock: 90,
+                image: "https://picsum.photos/seed/jeans1/300/200"
+            },
+            {
+                id: 10,
+                name: "Sports Shoes",
+                price: 3200,
+                originalPrice: 4500,
+                category: "shoes",
+                discount: 29,
+                stock: 65,
+                image: "https://picsum.photos/seed/sportshoes1/300/200"
+            },
+            {
+                id: 11,
+                name: "Digital Watch",
+                price: 1200,
+                originalPrice: 1800,
+                category: "watch",
+                discount: 33,
+                stock: 70,
+                image: "https://picsum.photos/seed/digitalwatch1/300/200"
+            },
+            {
+                id: 12,
+                name: "USB Flash Drive",
+                price: 450,
+                originalPrice: 650,
+                category: "gadgets",
+                discount: 0,
+                stock: 120,
+                image: "https://picsum.photos/seed/usb1/300/200"
+            }
+        ];
+
+        // Load additional products from localStorage (for temporary additions)
+        function loadAdditionalProducts() {
+            const savedProducts = JSON.parse(localStorage.getItem('additionalProducts')) || [];
+            const maxId = Math.max(...products.map(p => p.id), 0);
+            
+            savedProducts.forEach((product, index) => {
+                product.id = maxId + index + 1;
+                products.push(product);
+            });
+        }
+
+        // Save additional products to localStorage
+        function saveAdditionalProducts() {
+            const baseProducts = [
+                {
+                    id: 1,
+                    name: "Smartphone Pro Max",
+                    price: 45000,
+                    originalPrice: 65000,
+                    category: "electronics",
+                    discount: 30,
+                    stock: 50,
+                    image: "https://picsum.photos/seed/phone1/300/200"
+                },
+                {
+                    id: 2,
+                    name: "Laptop Ultra Book",
+                    price: 75000,
+                    originalPrice: 95000,
+                    category: "electronics",
+                    discount: 21,
+                    stock: 25,
+                    image: "https://picsum.photos/seed/laptop1/300/200"
+                },
+                {
+                    id: 3,
+                    name: "Fashion T-Shirt",
+                    price: 800,
+                    originalPrice: 1200,
+                    category: "fashion",
+                    discount: 33,
+                    stock: 100,
+                    image: "https://picsum.photos/seed/shirt1/300/200"
+                },
+                {
+                    id: 4,
+                    name: "Running Shoes",
+                    price: 2500,
+                    originalPrice: 3500,
+                category: "shoes",
+                discount: 29,
+                stock: 75,
+                image: "https://picsum.photos/seed/shoes1/300/200"
+            },
+            {
+                id: 5,
+                name: "Smart Watch",
+                price: 3500,
+                originalPrice: 5000,
+                category: "watch",
+                discount: 30,
+                stock: 60,
+                image: "https://picsum.photos/seed/watch1/300/200"
+            },
+            {
+                id: 6,
+                name: "Gaming Headset",
+                price: 1800,
+                originalPrice: 2500,
+                category: "gadgets",
+                discount: 28,
+                stock: 40,
+                image: "https://picsum.photos/seed/headset1/300/200"
+            },
+            {
+                id: 7,
+                name: "Leather Wallet",
+                price: 600,
+                originalPrice: 900,
+                category: "accessories",
+                discount: 33,
+                stock: 80,
+                image: "https://picsum.photos/seed/wallet1/300/200"
+            },
+            {
+                id: 8,
+                name: "Wireless Earbuds",
+                price: 2200,
+                originalPrice: 3200,
+                category: "electronics",
+                discount: 31,
+                stock: 55,
+                image: "https://picsum.photos/seed/earbuds1/300/200"
+            },
+            {
+                id: 9,
+                name: "Denim Jeans",
+                price: 1500,
+                originalPrice: 2200,
+                category: "fashion",
+                discount: 32,
+                stock: 90,
+                image: "https://picsum.photos/seed/jeans1/300/200"
+            },
+            {
+                id: 10,
+                name: "Sports Shoes",
+                price: 3200,
+                originalPrice: 4500,
+                category: "shoes",
+                discount: 29,
+                stock: 65,
+                image: "https://picsum.photos/seed/sportshoes1/300/200"
+            },
+            {
+                id: 11,
+                name: "Digital Watch",
+                price: 1200,
+                originalPrice: 1800,
+                category: "watch",
+                discount: 33,
+                stock: 70,
+                image: "https://picsum.photos/seed/digitalwatch1/300/200"
+            },
+            {
+                id: 12,
+                name: "USB Flash Drive",
+                price: 450,
+                originalPrice: 650,
+                category: "gadgets",
+                discount: 0,
+                stock: 120,
+                image: "https://picsum.photos/seed/usb1/300/200"
+            }
+            ];
+            
+            const additionalProducts = products.filter(p => !baseProducts.find(bp => bp.name === p.name && bp.price === p.price));
+            localStorage.setItem('additionalProducts', JSON.stringify(additionalProducts));
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAdditionalProducts();
+            renderProducts(products);
+            updateCartCount();
+            startSlider();
+            setupScrollListener();
+            loadAdminData();
+            initializeAddressDropdowns();
+            setupMobileAdminAccess(); // Setup mobile admin access
+        });
+
+        // Admin Panel Access Function
+        function handleAdminAccess(event) {
+            if (event.shiftKey) {
+                event.preventDefault();
+                toggleAdminPanel();
+            } else {
+            }
+        }
+
+        function handleMobileAdminAccess() {
+            // For mobile devices - use long press or double tap
+            toggleAdminPanel();
+        }
+
+        // Mobile Admin Access - Long Press Detection
+        let adminPressTimer;
+        let adminPressDuration = 0;
+
+        function setupMobileAdminAccess() {
+            const loginBtn = document.querySelector('.login-btn');
+            
+            // Long press for mobile (2 seconds)
+            loginBtn.addEventListener('touchstart', function(e) {
+                adminPressTimer = setTimeout(() => {
+                    handleMobileAdminAccess();
+                    showToast('Admin panel accessed!');
+                }, 2000);
+            });
+            
+            loginBtn.addEventListener('touchend', function(e) {
+                clearTimeout(adminPressTimer);
+            });
+            
+            // Double tap for mobile
+            let lastTap = 0;
+            loginBtn.addEventListener('touchend', function(e) {
+                const currentTime = new Date().getTime();
+                const tapLength = currentTime - lastTap;
+                if (tapLength < 500 && tapLength > 0) {
+                    handleMobileAdminAccess();
+                    showToast('Admin panel accessed!');
+                }
+                lastTap = currentTime;
+            });
+        }
+
+        // Admin Panel Functions
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('adminPanel');
+            adminPanel.classList.toggle('active');
+            if (adminPanel.classList.contains('active')) {
+                loadAdminData();
+            }
+        }
+
+        function showAdminSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.admin-nav button').forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(`admin-${section}`).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load section data
+            if (section === 'orders') loadOrders();
+            if (section === 'products') loadProducts();
+            if (section === 'customers') loadCustomers();
+            if (section === 'courier') loadShipments();
+        }
+
+        function loadAdminData() {
+            updateDashboardStats();
+            loadOrders();
+            loadProducts();
+            loadCustomers();
+            loadShipments();
+        }
+
+        function updateDashboardStats() {
+            const totalOrders = orders.length;
+            const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+            const totalCustomers = customers.length;
+            const pendingOrders = orders.filter(order => order.status === 'pending').length;
+
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('totalRevenue').textContent = `৳${totalRevenue}`;
+            document.getElementById('totalCustomers').textContent = totalCustomers;
+            document.getElementById('pendingOrders').textContent = pendingOrders;
+        }
+
+        function loadOrders() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '';
+            
+            orders.forEach(order => {
+                // Create product details HTML
+                const productDetails = order.items.map(item => `
+                    <div style="margin-bottom: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 4px;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">${item.name}</div>
+                                <div style="font-size: 12px; color: #666;">
+                                    Size: ${item.size || 'N/A'} | Qty: ${item.quantity} | ৳${item.price}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>#${order.id}</td>
+                    <td>
+                        <div style="font-weight: bold;">${order.customer.name}</div>
+                        <div style="font-size: 12px; color: #666;">${order.customer.phone}</div>
+                    </td>
+                    <td>
+                        <div style="font-size: 12px;">
+                            ${order.customer.address}
+                        </div>
+                    </td>
+                    <td>
+                        <div style="max-width: 250px;">
+                            ${productDetails}
+                        </div>
+                    </td>
+                    <td>৳${order.total}</td>
+                    <td><span class="status-badge status-${order.status}">${order.status}</span></td>
+                    <td>${new Date(order.date).toLocaleDateString()}</td>
+                    <td>
+                        <button class="quantity-btn" onclick="updateOrderStatus(${order.id})">Update</button>
+                        <button class="quantity-btn" onclick="viewOrderDetails(${order.id})">View</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function loadProducts() {
+            const tbody = document.getElementById('productsTableBody');
+            tbody.innerHTML = '';
+            
+            products.forEach(product => {
+                const stock = product.stock || Math.floor(Math.random() * 100) + 1;
+                const status = stock > 10 ? 'In Stock' : 'Low Stock';
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td>৳${product.price}</td>
+                    <td>${stock}</td>
+                    <td><span class="status-badge ${stock > 10 ? 'status-delivered' : 'status-pending'}">${status}</span></td>
+                    <td>
+                        <button class="quantity-btn" onclick="editProduct(${product.id})">Edit</button>
+                        <button class="quantity-btn" onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function loadCustomers() {
+            const tbody = document.getElementById('customersTableBody');
+            tbody.innerHTML = '';
+            
+            customers.forEach(customer => {
+                const customerOrders = orders.filter(order => order.customer.phone === customer.phone);
+                const totalSpent = customerOrders.reduce((sum, order) => sum + order.total, 0);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${customer.id}</td>
+                    <td>${customer.name}</td>
+                    <td>${customer.phone}</td>
+                    <td>${customer.address}</td>
+                    <td>${customerOrders.length}</td>
+                    <td>৳${totalSpent}</td>
+                    <td>
+                        <button class="quantity-btn" onclick="viewCustomerOrders(${customer.id})">Orders</button>
+                        <button class="quantity-btn" onclick="contactCustomer(${customer.phone})">Contact</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function loadShipments() {
+            const tbody = document.getElementById('shipmentsTableBody');
+            tbody.innerHTML = '';
+            
+            shipments.forEach(shipment => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>#${shipment.id}</td>
+                    <td>#${shipment.orderId}</td>
+                    <td>${shipment.courier}</td>
+                    <td>${shipment.tracking}</td>
+                    <td><span class="status-badge status-${shipment.status}">${shipment.status}</span></td>
+                    <td>${new Date(shipment.created).toLocaleDateString()}</td>
+                    <td>
+                        <button class="quantity-btn" onclick="trackShipment(${shipment.tracking})">Track</button>
+                        <button class="quantity-btn" onclick="updateShipment(${shipment.id})">Update</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function updateOrderStatus(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (order) {
+                const statuses = ['pending', 'processing', 'shipped', 'delivered'];
+                const currentIndex = statuses.indexOf(order.status);
+                order.status = statuses[(currentIndex + 1) % statuses.length];
+                localStorage.setItem('orders', JSON.stringify(orders));
+                loadOrders();
+                updateDashboardStats();
+                showToast(`Order #${orderId} status updated to ${order.status}`);
+            }
+        }
+
+        function createShipment() {
+            const orderId = document.getElementById('shipmentOrderId').value;
+            const courier = document.getElementById('courierService').value;
+            const tracking = 'TRK' + Date.now();
+            
+            if (!orderId) {
+                showToast('Please enter Order ID');
+                return;
+            }
+            
+            const shipment = {
+                id: shipments.length + 1,
+                orderId: orderId,
+                courier: courier,
+                tracking: tracking,
+                status: 'pending',
+                created: new Date().toISOString()
+            };
+            
+            shipments.push(shipment);
+            localStorage.setItem('shipments', JSON.stringify(shipments));
+            
+            document.getElementById('shipmentOrderId').value = '';
+            document.getElementById('trackingNumber').value = tracking;
+            
+            loadShipments();
+            showToast(`Shipment created with tracking: ${tracking}`);
+        }
+
+        function updateShipment(shipmentId) {
+            const shipment = shipments.find(s => s.id === shipmentId);
+            if (shipment) {
+                const statuses = ['pending', 'processing', 'shipped', 'delivered'];
+                const currentIndex = statuses.indexOf(shipment.status);
+                shipment.status = statuses[(currentIndex + 1) % statuses.length];
+                localStorage.setItem('shipments', JSON.stringify(shipments));
+                loadShipments();
+                showToast(`Shipment #${shipmentId} status updated to ${shipment.status}`);
+            }
+        }
+
+        function closeCourierModal() {
+            document.getElementById('courierModal').classList.remove('active');
+            document.getElementById('trackingResult').style.display = 'none';
+            document.getElementById('trackingInput').value = '';
+        }
+
+        function trackOrder() {
+            const trackingNumber = document.getElementById('trackingInput').value;
+            
+            if (!trackingNumber) {
+                showToast('Please enter tracking number');
+                return;
+            }
+            
+            // Simulate tracking data
+            const trackingData = [
+                { time: '10:00 AM', status: 'Order Placed', location: 'Dhaka', completed: true },
+                { time: '2:00 PM', status: 'Order Confirmed', location: 'Dhaka Warehouse', completed: true },
+                { time: '6:00 PM', status: 'Order Processed', location: 'Dhaka Warehouse', completed: true },
+                { time: '10:00 AM', status: 'Out for Delivery', location: 'Transit Hub', completed: false },
+                { time: '4:00 PM', status: 'Expected Delivery', location: 'Your Address', completed: false }
+            ];
+            
+            const timeline = document.getElementById('trackingTimeline');
+            timeline.innerHTML = '';
+            
+            trackingData.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = `tracking-step ${step.completed ? 'completed' : ''}`;
+                stepDiv.innerHTML = `
+                    <div class="tracking-time">${step.time}</div>
+                    <div class="tracking-status">${step.status}</div>
+                    <div class="tracking-location">${step.location}</div>
+                `;
+                timeline.appendChild(stepDiv);
+            });
+            
+            document.getElementById('trackingResult').style.display = 'block';
+        }
+
+        function trackShipment(trackingNumber) {
+            document.getElementById('trackingInput').value = trackingNumber;
+            openCourierModal();
+            trackOrder();
+        }
+
+        // Render Products
+        function renderProducts(productsToRender) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="discount-badge">${product.discount}% OFF</div>
+                    <div class="product-info">
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-price">
+                            ৳${product.price}
+                            <span class="product-original-price">৳${product.originalPrice}</span>
+                        </div>
+                        <div class="size-selector" style="margin: 10px 0;">
+                            <label style="font-size: 12px; margin-bottom: 5px; display: block;">Size:</label>
+                            <select id="size-${product.id}" style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+
+        // Add to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const sizeElement = document.getElementById(`size-${productId}`);
+            const selectedSize = sizeElement ? sizeElement.value : 'M';
+            const existingItem = cart.find(item => item.id === productId && item.size === selectedSize);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1, size: selectedSize });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            showToast(`${product.name} (Size: ${selectedSize}) added to cart!`);
+        }
+
+        // Update Cart Count
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Toggle Cart
+        function toggleCart() {
+            const cartSidebar = document.getElementById('cartSidebar');
+            cartSidebar.classList.toggle('active');
+            renderCart();
+        }
+
+        // Render Cart
+        function renderCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty</p>';
+                cartTotal.textContent = 'Total: ৳0';
+                return;
+            }
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">৳${item.price}</div>
+                        <div class="cart-item-size" style="font-size: 12px; color: #666; margin: 2px 0;">Size: ${item.size || 'M'}</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+                total += item.price * item.quantity;
+            });
+            cartTotal.textContent = `Total: ৳${total}`;
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            showToast('Item removed from cart');
+        }
+
+        // Update Cart Quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCartCount();
+                    renderCart();
+                }
+            }
+        }
+
+        // Search Products
+        function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm)
+            );
+            renderProducts(filteredProducts);
+        }
+
+        // Real-time Search
+        document.getElementById('searchInput').addEventListener('input', searchProducts);
+
+        // Filter by Category
+        function filterByCategory(category) {
+            const filteredProducts = products.filter(product => product.category === category);
+            renderProducts(filteredProducts);
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Slider Button Functions
+        function scrollToShop() {
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            showToast('Welcome to our shop! Browse categories below.');
+        }
+
+        function showFlashDeals() {
+            // Filter products with high discounts (30% and above)
+            const flashDeals = products.filter(product => product.discount >= 30);
+            renderProducts(flashDeals);
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            showToast(`Showing ${flashDeals.length} flash deals with up to 70% OFF!`);
+        }
+
+        function showNewArrivals() {
+            // Show all products (in a real app, you'd filter by newest)
+            renderProducts(products);
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            showToast('Explore our latest arrivals and new collections!');
+        }
+
+        // Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function startSlider() {
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlider();
+            }, 3000);
+        }
+
+        function updateSlider() {
+            const slider = document.getElementById('slider');
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Checkout
+        function openCheckout() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('active');
+            updateCheckoutTotal();
+        }
+
+        function closeCheckout() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.remove('active');
+        }
+
+        function updateCheckoutTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('checkoutTotal').textContent = `Total: ৳${total}`;
+        }
+
+        function selectPayment(element, method) {
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Email Notification Function
+        function sendOrderNotification(order) {
+            // Create email template
+            const emailParams = {
+                to_email: 'sohel901190@gmail.com',
+                from_name: 'My Shop Website',
+                subject: `New Order #${order.id} - ${order.customer.name}`,
+                message: `
+                    <h2>New Order Received!</h2>
+                    <p><strong>Order ID:</strong> #${order.id}</p>
+                    <p><strong>Customer Name:</strong> ${order.customer.name}</p>
+                    <p><strong>Phone:</strong> ${order.customer.phone}</p>
+                    <p><strong>Address:</strong> ${order.customer.address}</p>
+                    <p><strong>District:</strong> ${order.customer.district}</p>
+                    <p><strong>Thana:</strong> ${order.customer.thana}</p>
+                    <p><strong>Payment Method:</strong> ${order.payment}</p>
+                    <p><strong>Total Amount:</strong> ৳${order.total}</p>
+                    <p><strong>Order Date:</strong> ${new Date(order.date).toLocaleString()}</p>
+                    
+                    <h3>Order Items:</h3>
+                    <table border="1" style="border-collapse: collapse; width: 100%;">
+                        <tr>
+                            <th style="padding: 8px;">Product Name</th>
+                            <th style="padding: 8px;">Quantity</th>
+                            <th style="padding: 8px;">Price</th>
+                            <th style="padding: 8px;">Total</th>
+                        </tr>
+                        ${order.items.map(item => `
+                            <tr>
+                                <td style="padding: 8px;">${item.name}</td>
+                                <td style="padding: 8px;">${item.quantity}</td>
+                                <td style="padding: 8px;">৳${item.price}</td>
+                                <td style="padding: 8px;">৳${item.price * item.quantity}</td>
+                            </tr>
+                        `).join('')}
+                    </table>
+                    
+                    <p style="margin-top: 20px;"><strong>Please process this order as soon as possible.</strong></p>
+                `
+            };
+
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', emailParams)
+                .then(function(response) {
+                    console.log('Email sent successfully!', response.status, response.text);
+                    showToast('Order confirmation sent to admin!');
+                }, function(error) {
+                    console.log('Failed to send email:', error);
+                    // Fallback: Show error but don't block the order
+                    showToast('Order placed successfully (email notification failed)');
+                });
+        }
+
+        // Show Info Section Function
+        function showInfoSection(sectionId) {
+            // Hide all info sections
+            const allSections = document.querySelectorAll('.info-section');
+            allSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                // Scroll to top of the section
+                targetSection.scrollTop = 0;
+            }
+        }
+
+        // Close Info Section Function
+        function closeInfoSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.remove('active');
+            }
+        }
+
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            
+            // Close all other FAQ items
+            allFaqItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+        }
+
+        // Track Order Function
+        function trackUserOrder() {
+            const orderId = document.getElementById('trackOrderId').value;
+            
+            if (!orderId) {
+                showToast('Please enter your Order ID');
+                return;
+            }
+            
+            // Show the tracking result
+            document.getElementById('trackResult').style.display = 'block';
+            
+            // Show success message
+            showToast('Your order is being processed.');
+            
+            // Scroll to tracking result
+            document.getElementById('trackResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Enhanced Checkout Form Submit
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const district = document.getElementById('district').value;
+            const thana = document.getElementById('thana').value;
+            const address = document.getElementById('address').value;
+            const selectedPayment = document.querySelector('.payment-option.selected');
+            
+            if (!selectedPayment) {
+                showToast('Please select a payment method');
+                return;
+            }
+            
+            if (!district || !thana) {
+                showToast('Please select both district and thana');
+                return;
+            }
+            
+            // Create full address string
+            const fullAddress = `${address}, ${thana}, ${district}`;
+            
+            // Process order
+            const order = {
+                id: orders.length + 1,
+                customer: { 
+                    name, 
+                    phone, 
+                    address: fullAddress,
+                    district: district,
+                    thana: thana,
+                    detailedAddress: address
+                },
+                items: [...cart],
+                payment: selectedPayment.textContent.trim(),
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: 'pending',
+                date: new Date().toISOString()
+            };
+            
+            // Add to orders
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Add to customers if new
+            if (!customers.find(c => c.phone === phone)) {
+                customers.push({
+                    id: customers.length + 1,
+                    name: name,
+                    phone: phone,
+                    address: fullAddress,
+                    district: district,
+                    thana: thana,
+                    registered: new Date().toISOString()
+                });
+                localStorage.setItem('customers', JSON.stringify(customers));
+            }
+            
+            // Send email notification to admin
+            sendOrderNotification(order);
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCart();
+            
+            // Close modals
+            closeCheckout();
+            toggleCart();
+            
+            // Show success message with tracking info
+            const trackingNumber = 'TRK' + Date.now();
+            showToast(`Order placed successfully! Your order will be delivered to ${fullAddress}. Tracking: ${trackingNumber}`);
+            
+            // Reset form
+            document.getElementById('checkoutForm').reset();
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+        });
+
+        function addNewProduct() {
+            const name = document.getElementById('newProductName').value;
+            const category = document.getElementById('newProductCategory').value;
+            const price = parseFloat(document.getElementById('newProductPrice').value);
+            const originalPrice = parseFloat(document.getElementById('newProductOriginalPrice').value);
+            const discount = parseInt(document.getElementById('newProductDiscount').value) || 0;
+            const stock = parseInt(document.getElementById('newProductStock').value) || 0;
+            let image = document.getElementById('newProductImage').value;
+
+            // Validation
+            if (!name || !price || !originalPrice) {
+                showToast('Please fill in all required fields');
+                return;
+            }
+
+            // Generate image URL if not provided
+            if (!image) {
+                const seed = name.toLowerCase().replace(/\s+/g, '') + Date.now();
+                image = `https://picsum.photos/seed/${seed}/300/200`;
+            }
+
+            // Create new product
+            const newProduct = {
+                id: Math.max(...products.map(p => p.id)) + 1,
+                name: name,
+                category: category,
+                price: price,
+                originalPrice: originalPrice,
+                discount: discount,
+                image: image,
+                stock: stock
+            };
+
+            // Add to products array
+            products.push(newProduct);
+            
+            // Save additional products to localStorage
+            saveAdditionalProducts();
+            
+            // Refresh product display
+            renderProducts(products);
+            loadProducts();
+            
+            // Clear form
+            document.getElementById('newProductName').value = '';
+            document.getElementById('newProductCategory').value = 'electronics';
+            document.getElementById('newProductPrice').value = '';
+            document.getElementById('newProductOriginalPrice').value = '';
+            document.getElementById('newProductDiscount').value = '';
+            document.getElementById('newProductStock').value = '';
+            document.getElementById('newProductImage').value = '';
+            
+            showToast(`Product "${name}" added successfully!`);
+        }
+
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Fill form with product data
+                document.getElementById('newProductName').value = product.name;
+                document.getElementById('newProductCategory').value = product.category;
+                document.getElementById('newProductPrice').value = product.price;
+                document.getElementById('newProductOriginalPrice').value = product.originalPrice;
+                document.getElementById('newProductDiscount').value = product.discount;
+                document.getElementById('newProductStock').value = product.stock || 0;
+                document.getElementById('newProductImage').value = product.image;
+                
+                // Scroll to form
+                document.querySelector('.courier-form').scrollIntoView({ behavior: 'smooth' });
+                
+                // Change button text to indicate update mode
+                const addBtn = document.querySelector('.courier-form .place-order-btn');
+                addBtn.textContent = 'Update Product';
+                addBtn.onclick = function() { updateProduct(productId); };
+                
+                showToast('Edit product details and click "Update Product" to save changes');
+            }
+        }
+
+        function updateProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                // Update product data
+                product.name = document.getElementById('newProductName').value;
+                product.category = document.getElementById('newProductCategory').value;
+                product.price = parseFloat(document.getElementById('newProductPrice').value);
+                product.originalPrice = parseFloat(document.getElementById('newProductOriginalPrice').value);
+                product.discount = parseInt(document.getElementById('newProductDiscount').value) || 0;
+                product.stock = parseInt(document.getElementById('newProductStock').value) || 0;
+                
+                const imageInput = document.getElementById('newProductImage').value;
+                if (imageInput) {
+                    product.image = imageInput;
+                }
+
+                // Validation
+                if (!product.name || !product.price || !product.originalPrice) {
+                    showToast('Please fill in all required fields');
+                    return;
+                }
+
+                // Save additional products to localStorage
+                saveAdditionalProducts();
+                
+                // Refresh displays
+                renderProducts(products);
+                loadProducts();
+                
+                // Reset button back to Add Product mode
+                const addBtn = document.querySelector('.courier-form .place-order-btn');
+                addBtn.textContent = 'Add Product';
+                addBtn.onclick = addNewProduct;
+                
+                // Clear form
+                document.getElementById('newProductName').value = '';
+                document.getElementById('newProductCategory').value = 'electronics';
+                document.getElementById('newProductPrice').value = '';
+                document.getElementById('newProductOriginalPrice').value = '';
+                document.getElementById('newProductDiscount').value = '';
+                document.getElementById('newProductStock').value = '';
+                document.getElementById('newProductImage').value = '';
+                
+                showToast(`Product "${product.name}" updated successfully!`);
+            }
+        }
+
+        function deleteProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product && confirm(`Are you sure you want to delete "${product.name}"?`)) {
+                products = products.filter(p => p.id !== productId);
+                // Save additional products to localStorage
+                saveAdditionalProducts();
+                renderProducts(products);
+                loadProducts();
+                showToast(`Product "${product.name}" deleted successfully`);
+            }
+        }
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setupScrollListener() {
+            const scrollTop = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTop.classList.add('visible');
+                } else {
+                    scrollTop.classList.remove('visible');
+                }
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
