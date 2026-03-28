@@ -2387,16 +2387,7 @@
         
         // Main Products Array - This is the permanent data source
         let products = [
-            {
-                id: 1,
-                name: "Running Shoes",
-                price: 2500,
-                originalPrice: 3500,
-                category: "shoes",
-                discount: 29,
-                stock: 75,
-                image: "https://apex4u.com/product/a-9451ba10"
-            },
+            
             {
                 id: 2,
                 name: "Smart Watch",
@@ -2408,37 +2399,6 @@
                 image: "https://www.startech.com.bd/colmi-p71-bluetooth-calling-smart-watch"
             },
           
-            {
-                id: 3,
-                name: "Leather Wallet",
-                price: 600,
-                originalPrice: 900,
-                category: "accessories",
-                discount: 33,
-                stock: 80,
-                image: "https://www.daraz.com.bd/products/100-i521523472.html"
-            },
-      
-            {
-                id: 4,
-                name: "Denim Jeans",
-                price: 1500,
-                originalPrice: 2200,
-                category: "fashion",
-                discount: 32,
-                stock: 90,
-                image: "https://imgur.com/0rl0mC5.jpg"
-            },
-            {
-                id: 5,
-                name: "Sports Shoes",
-                price: 3200,
-                originalPrice: 4500,
-                category: "shoes",
-                discount: 29,
-                stock: 65,
-                image: "https://www.daraz.com.bd/products/-i526559051.html"
-            },
             
         ];
 
@@ -2456,16 +2416,7 @@
         // Save additional products to localStorage
         function saveAdditionalProducts() {
             const baseProducts = [
-                {
-                    id: 1,
-                    name: "Running Shoes",
-                    price: 2500,
-                    originalPrice: 3500,
-                    category: "shoes",
-                    discount: 29,
-                    stock: 75,
-                    image: "https://apex4u.com/product/a-9451ba10"
-                },
+            
                 {
                     id: 2,
                     name: "Smart Watch",
@@ -2476,37 +2427,7 @@
                     stock: 60,
                     image: "https://www.startech.com.bd/colmi-p71-bluetooth-calling-smart-watch"
                 },
-                {
-                    id: 3,
-                    name: "Leather Wallet",
-                    price: 600,
-                    originalPrice: 900,
-                    category: "accessories",
-                    discount: 33,
-                    stock: 80,
-                    image: "https://www.daraz.com.bd/products/100-i521523472.html"
-                },
-                {
-                    id: 4,
-                    name: "Denim Jeans",
-                    price: 1500,
-                    originalPrice: 2200,
-                    category: "fashion",
-                    discount: 32,
-                    stock: 90,
-                    image: "https://imgur.com/0rl0mC5.jpg"
-                },
-                {
-                    id: 5,
-                    name: "Sports Shoes",
-                    price: 3200,
-                    originalPrice: 4500,
-                    category: "shoes",
-                    discount: 29,
-                    stock: 65,
-                    image: "https://www.daraz.com.bd/products/-i526559051.html"
-                },
-                
+                      
             ];
             
             const additionalProducts = products.filter(p => !baseProducts.find(bp => bp.name === p.name && bp.price === p.price));
